@@ -1,7 +1,47 @@
-[
-    {'name':'chicken', 'img_url':'https://ewscripps.brightspotcdn.com/dims4/default/f3961eb/2147483647/strip/true/crop/1000x563+0+0/resize/1280x720!/quality/90/?url=https%3A%2F%2Fewscripps.brightspotcdn.com%2F77%2Fa4%2Fe0c7a0f44224bd77a617b3db83a7%2Fwptv-raw-chicken.jpg','recipes':[
-        {'name':'Chicken Enchiladas','img_url':'https://www.google.com/search?q=chicken+enchiladas&sxsrf=ACYBGNSuy4P44Np26djgD3x23rfBO_wTrQ:1580852015324&source=lnms&tbm=isch&sa=X&ved=2ahUKEwjmi8PW7LjnAhXxdM0KHaj5B_EQ_AUoAXoECA8QAw&biw=1280&bih=642#imgrc=3KxRNzyCFa2ltM','amount':1, 'serves':2},
-        {'name':'Chicken Parmesean','img_url':'https://www.spendwithpennies.com/wp-content/uploads/2018/11/SpendWithPennies-Chicken-Parmesan-24.jpg','amount':1, 'serves':2} ]
-    }
-
+[ {"type": "Protein", "items": [
+    {"name":"Chicken", "img_url":"https://ewscripps.brightspotcdn.com/dims4/default/f3961eb/2147483647/strip/true/crop/1000x563+0+0/resize/1280x720!/quality/90/?url=https%3A%2F%2Fewscripps.brightspotcdn.com%2F77%2Fa4%2Fe0c7a0f44224bd77a617b3db83a7%2Fwptv-raw-chicken.jpg",
+     "recipes":[
+        {"name":"Chicken Enchiladas","img_url":"https://food.fnr.sndimg.com/content/dam/images/food/fullset/2007/4/30/0/Cinco_Enchiladas.jpg.rend.hgtvcom.826.620.suffix/1382538528797.jpeg",:"amount":1, "serves":2},
+        {"name":"Chicken Parmesean","img_url":"https://www.spendwithpennies.com/wp-content/uploads/2018/11/SpendWithPennies-Chicken-Parmesan-24.jpg","amount":1, "serves":2} 
+     ]
+    },
+    {"name":"Beef", "img_url":"https://media.istockphoto.com/photos/profile-of-holstein-cow-5-years-old-standing-picture-id104783196?k=6&m=104783196&s=612x612&w=0&h=D6e72CqOGda0g_YYO3R3eIXq-yfgmfJxHKvpLQaePAs=",
+     "recipes":[
+        {"name":"Hamburgers","img_url":"https://media.istockphoto.com/photos/hamburger-with-fries-picture-id617364554?k=6&m=617364554&s=612x612&w=0&h=BifDNyNdMMMPvE3q9MX3PmBPmmIfG_9v5jbarS7vHLo=","amount":1, "serves":2},
+        {"name":"Steak","img_url":"https://i.ytimg.com/vi/nsw0Px-Pho8/maxresdefault.jpg","amount":1, "serves":2} 
+     ]
+    },
+    {"name":"Shrimp", "img_url":"https://i0.wp.com/images-prod.healthline.com/hlcmsresource/images/AN_images/shrimp-on-wooden-platter-1296x728.jpg?w=1155&h=1528",
+     "recipes":[
+        {"name":"Shrimp Scampi","img_url":"https://www.cookingclassy.com/wp-content/uploads/2019/07/shrimp-scampi-02.jpg","amount":1, "serves":2}
+     ]
+    }]},
+    {"type" : "Vegetable", "items": [
+    {"name":"Green Beans", "img_url':'https://cook.fnr.sndimg.com/content/dam/images/cook/fullset/2015/9/23/0/CCPLBSP1H_Heavenly-Sauteed-String-Beans-with-Garlic_s4x3.jpg.rend.hgtvcom.616.462.suffix/1516897726695.jpeg",
+     "recipes":[
+        {"name":"Green Bean Casserole","img_url":"https://natashaskitchen.com/wp-content/uploads/2018/10/Green-Bean-Casserole-11-Edit.jpg","amount":1, "serves":2}
+     ]
+    },
+    {"name":"Bell Peppers", "img_url":"https://prods3.imgix.net/images/articles/2017_07/nonfeatured-difference-bell-peppers.jpg?auto=format%2Ccompress&dpr=2.63&ixjsv=2.2.3&q=38&w=370",
+     "recipes":[
+        {"name":"Stuffed Peppers","img_url":"https://food.fnr.sndimg.com/content/dam/images/food/fullset/2016/2/26/2/WU1307H_stuffed-peppers_s4x3.jpg.rend.hgtvcom.616.462.suffix/1463506005081.jpeg","amount":1, "serves":2}
+     ]
+    },
+    {"name":"Broccoli", "img_url":"https://www.health.harvard.edu/media/content/images/p7_Broccoli_HH1812_gi905351392.jpg",
+     "recipes":[
+        {"name":"Garlic Broccoli","img_url":"https://rasamalaysia.com/wp-content/uploads/2016/06/garlic-broccoli2.jpg","amount":1, "serves":2}
+     ]
+    }]},
+    {"type":"Starch", "items":[
+    {"name":"Potato", "img_url":"https://www.irishtimes.com/polopoly_fs/1.3967277.1564062363!/image/image.jpg_gen/derivatives/box_620_330/image.jpg",
+     "recipes":[
+        {"name":"Mashed Potatoes","img_url":"https://images-gmi-pmc.edge-generalmills.com/1156f4ec-29c8-4cd9-80db-7d4ee330b1d0.jpg","amount":1, "serves":2}
+     ]
+    },
+    {"name":"Pasta", "img_url":"https://www.foodiecrush.com/wp-content/uploads/2019/07/Pomodoro-Sauce-foodiecrush.com-015.jpg",
+     "recipes":[
+        {"name":"Spaghetti","img_url":"https://www.simplyhappyfoodie.com/wp-content/uploads/2018/02/instant-pot-spaghetti-4.jpg","amount":1, "serves":2}
+     ]
+    }]}
+    
 ]
