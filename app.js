@@ -37,17 +37,19 @@ angular.module('app').controller('MainController', ['$scope', '$log', 'recipeSer
         desserts: ['ice cream', 'waffles']
     }
     $scope.data = data;
-    $scope.ingredients = recipeService.ingredients;
-    $log.log($scope.ingredients)
+    recipeService.getData().then(function(results){
+        $scope.ingredients = results.data;
+        $log.log($scope.ingredients)
+    });
 }])
 
 // data service
 angular.module('app').service('recipeService', ['$http', function($http){
-    $http.get('/ingredients.json')
-        .then(function(data) {
-            this.ingredients = data;
-            console.log(data)
-        });
+    
+    this.getData = function(){
+        return $http.get('/ingredients.json');
+    };
+    
 }]);
 
 // Single Responsibility Principle (SRP)
