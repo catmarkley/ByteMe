@@ -1,7 +1,7 @@
 [ {"type": "Protein", "items": [
     {"name":"Chicken", "img_url":"https://ewscripps.brightspotcdn.com/dims4/default/f3961eb/2147483647/strip/true/crop/1000x563+0+0/resize/1280x720!/quality/90/?url=https%3A%2F%2Fewscripps.brightspotcdn.com%2F77%2Fa4%2Fe0c7a0f44224bd77a617b3db83a7%2Fwptv-raw-chicken.jpg",
      "recipes":[
-        {"name":"Chicken Enchiladas","img_url":"https://food.fnr.sndimg.com/content/dam/images/food/fullset/2007/4/30/0/Cinco_Enchiladas.jpg.rend.hgtvcom.826.620.suffix/1382538528797.jpeg",:"amount":1, "serves":2},
+        {"name":"Chicken Enchiladas","img_url":"https://food.fnr.sndimg.com/content/dam/images/food/fullset/2007/4/30/0/Cinco_Enchiladas.jpg.rend.hgtvcom.826.620.suffix/1382538528797.jpeg", "amount":1, "serves":2},
         {"name":"Chicken Parmesean","img_url":"https://www.spendwithpennies.com/wp-content/uploads/2018/11/SpendWithPennies-Chicken-Parmesan-24.jpg","amount":1, "serves":2} 
      ]
     },
@@ -17,7 +17,7 @@
      ]
     }]},
     {"type" : "Vegetable", "items": [
-    {"name":"Green Beans", "img_url':'https://cook.fnr.sndimg.com/content/dam/images/cook/fullset/2015/9/23/0/CCPLBSP1H_Heavenly-Sauteed-String-Beans-with-Garlic_s4x3.jpg.rend.hgtvcom.616.462.suffix/1516897726695.jpeg",
+    {"name":"Green Beans", "img_url":"https://cook.fnr.sndimg.com/content/dam/images/cook/fullset/2015/9/23/0/CCPLBSP1H_Heavenly-Sauteed-String-Beans-with-Garlic_s4x3.jpg.rend.hgtvcom.616.462.suffix/1516897726695.jpeg",
      "recipes":[
         {"name":"Green Bean Casserole","img_url":"https://natashaskitchen.com/wp-content/uploads/2018/10/Green-Bean-Casserole-11-Edit.jpg","amount":1, "serves":2}
      ]
