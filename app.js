@@ -31,15 +31,24 @@ angular.module('app').controller('second', ['$scope', function ($scope) {
 }]);
 
 // Explicit dependency injection
-function MainController($scope) {
+angular.module('app').controller('MainController', ['$scope', '$log', 'recipeService', function($scope, $log, recipeService){
     const data = {
         american: ['pizza', 'burgers', 'hotdogs'],
         desserts: ['ice cream', 'waffles']
     }
     $scope.data = data;
-}
-MainController.$inject = ['$scope']
-angular.module('app').controller('MainController', MainController)
+    $scope.ingredients = recipeService.ingredients;
+    $log.log($scope.ingredients)
+}])
+
+// data service
+angular.module('app').service('recipeService', ['$http', function($http){
+    $http.get('/ingredients.json')
+        .then(function(data) {
+            this.ingredients = data;
+            console.log(data)
+        });
+}]);
 
 // Single Responsibility Principle (SRP)
 
