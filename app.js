@@ -5,49 +5,40 @@ angular.module('app').config(function ($routeProvider, $locationProvider) {
     $locationProvider.hashPrefix('')
 
     $routeProvider
-        .when('/home', {
-            templateUrl: 'pages/main.html',
-            controller: 'MainController'
-        })
-        .when('/second', {
-            templateUrl: 'pages/second.html',
-            controller: 'second'
+        .when('/recipe', {
+            templateUrl: 'pages/recipe.html',
+            controller: 'RecipeController'
         })
         .otherwise({
-            templateUrl: 'pages/main.html',
-            controller: 'MainController'
+            templateUrl: 'pages/recipe.html',
+            controller: 'RecipeController'
         })
 })
 
 // Inline Annotation
-angular.module('app').controller('second', ['$scope', function ($scope) {
-
-    // TODO: MOVE JSON DATA SOURCE TO A SERVICE ()
-    const data = {
-        american: ['pizza', 'burgers', 'hotdogs'],
-        desserts: ['ice cream', 'waffles']
-    }
-    $scope.data = data;
+angular.module('app').controller('RecipeController', ['$scope', 'recipeService', function ($scope, $recipeService) {
+    
+    recipeService.getIngredients().then(function(results){
+        console.log($scope.ingredients)
+    })
+    
 }]);
 
 // Explicit dependency injection
-angular.module('app').controller('MainController', ['$scope', '$log', 'recipeService', function($scope, $log, recipeService){
-    const data = {
-        american: ['pizza', 'burgers', 'hotdogs'],
-        desserts: ['ice cream', 'waffles']
-    }
-    $scope.data = data;
-    $scope.ingredients = recipeService.ingredients;
-    $log.log($scope.ingredients)
+angular.module('app').controller('RecipeController', ['$scope', '$log', 'recipeService', function($scope, $log, recipeService){
+    
+    recipeService.getIngredients().then(function(ingredients){
+        $scope.ingredients = ingredients
+        console.log(ingredients)
+    })
+    
 }])
 
 // data service
 angular.module('app').service('recipeService', ['$http', function($http){
-    $http.get('/ingredients.json')
-        .then(function(data) {
-            this.ingredients = data;
-            console.log(data)
-        });
+    this.getIngredients = function(){
+        return $http.get('/ingredients.json')
+    }
 }]);
 
 // Single Responsibility Principle (SRP)
