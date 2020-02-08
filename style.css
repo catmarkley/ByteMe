@@ -1,3 +1,35 @@
 .brand-banner{
     background: seagreen
 }
+
+.col-img{
+    height=100px;
+}
+
+.center{
+    text-align: center;
+}
+
+.card-img-top {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+}
+
+.card-center{
+    display: inline-flex !important;
+}
+
+.spaced-out-sm{
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.spaced-out-md{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.white{
+    background: white;
+}
