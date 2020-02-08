@@ -5,50 +5,54 @@ angular.module('app').config(function ($routeProvider, $locationProvider) {
     $locationProvider.hashPrefix('')
 
     $routeProvider
-        .when('/recipe', {
+        .when('/ingredients', {
+            templateUrl: 'pages/ingredients.html',
+            controller: 'IngredientsController'
+        })
+        .when('/recipe/:ingredient', {
             templateUrl: 'pages/recipe.html',
             controller: 'RecipeController'
         })
         .otherwise({
-            templateUrl: 'pages/recipe.html',
-            controller: 'RecipeController'
+            templateUrl: 'pages/ingredients.html',
+            controller: 'IngredientsController'
         })
 })
 
-// Inline Annotation
-angular.module('app').controller('RecipeController', ['$scope', 'recipeService', function ($scope, $recipeService) {
+//Ingredients Controller
+angular.module('app').controller('IngredientsController', ['$scope', '$log', 'ingredientsService', function($scope, $log, ingredientsService){
     
-    recipeService.getIngredients().then(function(results){
-        console.log($scope.ingredients)
-    })
-    
-}]);
-
-// Explicit dependency injection
-angular.module('app').controller('RecipeController', ['$scope', '$log', 'recipeService', function($scope, $log, recipeService){
-    
-    recipeService.getIngredients().then(function(ingredients){
+    ingredientsService.getIngredients().then(function(ingredients){
         $scope.ingredients = ingredients
         console.log(ingredients)
     })
 }])
 
-// data service
-angular.module('app').service('recipeService', ['$http', function($http){
+//Recipe Controller
+angular.module('app').controller('RecipeController', ['$scope', '$log', 'ingredientsService', '$routeParams', function($scope, $log, ingredientsService, $routeParams){
+    $scope.ingredient = $routeParams.ingredient
+    $scope.recipes = ingredientsService.findRecipe($scope.ingredient)
+}])
+
+//Data service
+angular.module('app').service('ingredientsService', ['$http', function($http){
+    var ingr = {}
     this.getIngredients = function(){
-        return $http.get('/ingredients.json')
+        return ingr = $http.get('/ingredients.json')
     }
+    
+    this.findRecipe = function(ingredient){
+        recipes = []
+        ingr = ingr.$$state.value.data
+        for(foodidx in ingr){
+            for(igx in ingr[foodidx].items){
+                ingred = ingr[foodidx].items[igx]
+                if(ingredient.includes(ingred.name)){
+                    recipes.push(ingred)
+                }
+            }
+        }
+        return recipes
+    }
+    
 }]);
-
-// Single Responsibility Principle (SRP)
-
-// Separation of Concerns (SOC)
-
-// Don't Repeat Yourself (DRY)
-
-// Consistent Naming
-
-// Clean code leads to:
-// Easier onboarding for new team members (or future self)
-// Easier debugging
-// Easier to maintain
