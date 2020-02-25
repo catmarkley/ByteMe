@@ -6,7 +6,7 @@
             <div class="card card-center spaced-out-md" style="width: 18rem;" ng-repeat="recipe in food.recipes">
               <img ng-src="{{ recipe.img_url }}" class="card-img-top col_img" alt="...">
               <div class="card-body center">
-                <h5 class="card-title">{{ recipe.name }}</h5>
+                <a href="{{'#/groceries/'+recipe.name+'/'+food.name}}" class="btn btn-success">{{ recipe.name }}</a>
                 <p class="card-text"></p>
               </div>
             </div>
