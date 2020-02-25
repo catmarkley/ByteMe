@@ -9,6 +9,10 @@ angular.module('app').config(function ($routeProvider, $locationProvider) {
             templateUrl: 'pages/ingredients.html',
             controller: 'IngredientsController'
         })
+        .when('/search', {
+            templateUrl: 'pages/search.html',
+            controller: 'SearchController'
+        })
         .when('/recipe/:ingredient', {
             templateUrl: 'pages/recipe.html',
             controller: 'RecipeController'
@@ -18,13 +22,24 @@ angular.module('app').config(function ($routeProvider, $locationProvider) {
             controller: 'GroceriesController'
         })
         .otherwise({
-            templateUrl: 'pages/ingredients.html',
-            controller: 'IngredientsController'
+            templateUrl: 'pages/search.html',
+            controller: 'SearchController'
         })
 })
 
 //Ingredients Controller
 angular.module('app').controller('IngredientsController', ['$scope', '$log', 'ingredientsService', function($scope, $log, ingredientsService){
+    
+    ingredientsService.getIngredients().then(function(ingredients){
+        $scope.ingredients = ingredients
+        console.log(ingredients)
+    })
+}])
+
+//Search Controller
+angular.module('app').controller('SearchController', ['$scope', '$log', 'ingredientsService', function($scope, $log, ingredientsService){
+    
+    $scope.searchtext = '';
     
     ingredientsService.getIngredients().then(function(ingredients){
         $scope.ingredients = ingredients
