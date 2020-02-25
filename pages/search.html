@@ -1,0 +1,18 @@
+<div class="container spaced-out-sm">
+    <div class="container centered-vert search-box">
+        <div class="logo-container">
+            <img class="centered-horz logo-img" src="assets/byteme-logo.png">
+        </div>
+        <div ng-controller="SearchController">
+            <div class="input-group input-group-lg">
+                <input type="text" class="form-control" placeholder="Enter a recipe..." ng-model="searchtext">
+
+                <div class="input-group-append">
+                    <button class="btn btn-outline-secondary" id="inputGroup-sizing-lg">Search</button>
+                </div>
+            </div>
+            <h1>{{ searchtext }}</h1>
+        </div>
+
+    </div>
+</div>
