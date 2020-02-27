@@ -1,11 +1,12 @@
 function SearchResultsController(IngredientsService) {
     var ctrl = this;
-    
-    IngredientsService.getIngredients().then(function(ingredients){
-        ctrl.data = ingredients;
-        console.log("Done");
-        console.log(ingredients);
-    });
+
+    ctrl.$onInit = function () {
+      ctrl.data = IngredientsService.getIngredients();
+      console.log("Done");
+      console.log(ctrl.data);
+    }
+
 }
 
 angular
