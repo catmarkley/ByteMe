@@ -9,7 +9,7 @@ angular
   .config(function ($stateProvider) {
     $stateProvider
       .state('app', {
-        redirectTo: 'inventory',
+        redirectTo: 'search-bar',
         url: '/app',
         data: {
           requiredAuth: false
