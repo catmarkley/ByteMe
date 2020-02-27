@@ -6,10 +6,10 @@ var app = {
 angular
   .module('common')
   .component('app', app)
-  .config(function ($stateProvider) {
+  .config(function ($stateProvider, $locationProvider) {
+    $locationProvider.hashPrefix('');
     $stateProvider
       .state('app', {
-        redirectTo: 'search-bar',
         url: '/app',
         data: {
           requiredAuth: false

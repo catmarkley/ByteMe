@@ -8,4 +8,17 @@ var searchResults = {
 
 angular
   .module('components.search')
-  .component('searchResults', searchResults);
+  .component('searchResults', searchResults)
+  .config(function ($stateProvider){
+      $stateProvider
+        .state('searchResults', {
+          parent: 'app',
+          url: 'searchResults',
+          component: 'searchResults',
+          resolve: {
+            data: function (IngredientsService){
+              return IngredientsService.getIngredients();
+            }
+          }
+        })
+  });

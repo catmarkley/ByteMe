@@ -1,5 +1,18 @@
-<div class="container spaced-out-sm">
-    <div class="row">
-        <div ng-model="$ctrl.data"></div>
-    </div>
+<div class="search">
+  <div class="container spaced-out-sm">
+      <div class="row">
+          <div class="col center" ng-repeat="foodtype in $ctrl.data">
+              <h1 class="center"> {{ foodtype.type }} </h1>
+
+              <div class="card card-center spaced-out-md" style="width: 18rem;" ng-repeat="food in foodtype.items">
+                <img ng-src="{{ food.img_url }}" class="card-img-top col_img" alt="...">
+                <div class="card-body center">
+                  <h5 class="card-title">{{ food.name }}</h5>
+                  <p class="card-text"></p>
+                  <a href="{{'#/recipe/'+food.name}}" class="btn btn-success">Find Recipes</a>
+                </div>
+              </div>
+          </div>
+      </div>
+  </div>
 </div>
