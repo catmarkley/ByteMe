@@ -212,7 +212,7 @@
     {"name":"Dried Oregano", "amount":"2", "unit":"Teaspoon(s)"},
     {"name":"Dried Basil", "amount":"2", "unit":"Teaspoon(s)"},
     {"name":"Salt", "amount":"1", "unit":"Teaspoon(s)"},
-    {"name":"Black Pepper", "amount":"0.50", "unit":"Teaspoon(s)"},
+    {"name":"Black Pepper", "amount":"0.50", "unit":"Teaspoon(s)"}
     
 ]},
   {"id": "", "name":"Shrimp Fettuccine Alfredo", "ingredients": [
