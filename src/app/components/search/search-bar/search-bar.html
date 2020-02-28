@@ -1,19 +1,20 @@
 <div class="search">
     <div class="container spaced-out-sm">
-        <div class="container centered-vert search-box">
+        <div class="container search-box">
             <div class="logo-container">
-                <img class="centered-horz logo-img" src="img/byteme-logo.png">
+                <img src="../../../img/byteme-logo.jpg">
             </div>
-            <div ng-controller="SearchBarController">
-                <div class="input-group input-group-lg">
-                    <input type="text" class="form-control" placeholder="Enter a recipe..." ng-model="searchtext">
+            <div class="input-group input-group-lg">
+                <input type="text" class="form-control" placeholder="Enter an ingredient..." ng-model="$ctrl.searchtext">
 
-                    <div class="input-group-append">
-                        <button class="btn btn-outline-secondary" id="inputGroup-sizing-lg">Search</button>
-                    </div>
+                <div class="input-group-append">
+                    <button ng-click="$ctrl.addIngr($event)" class="btn btn-outline-secondary" id="inputGroup-sizing-lg">Add</button>
+                    <button ng-click="$ctrl.findRecipe($event, $ctrl.searchtext)" class="btn btn-outline-secondary" id="inputGroup-sizing-lg">Find Recipes</button>
                 </div>
-                <h1>{{ searchtext }}</h1>
             </div>
+            <h1>{{ $ctrl.searchtext }}</h1>
         </div>
+        <div>pantry will go here</div>
+        <div ui-view></div>
     </div>
 </div>
