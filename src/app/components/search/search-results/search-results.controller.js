@@ -1,8 +1,13 @@
 function SearchResultsController(IngredientsService, $state) {
     var ctrl = this;
-  
+
     var searchIngredient = $state.params.ingredient;
 
+
+    ctrl.goToRecipe = function () {
+      $state.go('recipe');
+
+    }
     ctrl.$onInit = function () {
       var data = IngredientsService.getIngredients();
       //TODO: tranfer the below code into the Ingredients Service

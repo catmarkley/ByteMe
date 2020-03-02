@@ -1,4 +1,5 @@
 angular
   .module('components', [
-    'components.search'
+    'components.search',
+    'components.recipe'
   ]);
