@@ -6,7 +6,7 @@
               <div class="card-body center">
                 <h5 class="card-title">{{ recipe.name }}</h5>
                 <p class="card-text"></p>
-                <a href="{{'#/recipe/'+recipe.name}}" class="btn btn-success">Find Recipes</a>
+                <a ng-click="$ctrl.goToRecipe($event)" class="btn btn-success">Go to Recipes</a>
               </div>
             </div>
         </div>
