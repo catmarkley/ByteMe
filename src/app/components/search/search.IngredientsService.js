@@ -11,9 +11,11 @@ function IngredientsService($http){
     }
 
     this.addToPantry = function(ingred){
-      pantry.push(ingred);
+      if(pantry.indexOf(ingred) == -1){
+        pantry.push(ingred);
+      }
     }
-
+    
     this.findRecipes = function(ingredient){
         recipes = []
         ingr = ingr.$$state.value.data
@@ -47,7 +49,7 @@ function IngredientsService($http){
         }
     }
 
-    var pantry = ['this', 'that', 'another item'];
+    var pantry = [];
 
     var data = [ {"type": "Protein", "items": [
     {"name":"Chicken", "img_url":"https://ewscripps.brightspotcdn.com/dims4/default/f3961eb/2147483647/strip/true/crop/1000x563+0+0/resize/1280x720!/quality/90/?url=https%3A%2F%2Fewscripps.brightspotcdn.com%2F77%2Fa4%2Fe0c7a0f44224bd77a617b3db83a7%2Fwptv-raw-chicken.jpg",

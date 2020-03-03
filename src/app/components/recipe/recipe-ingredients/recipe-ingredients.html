@@ -2,13 +2,23 @@
     <div class="row">
         <div class="col center">
           <h1> {{$ctrl.name}}</h1>
-            <div ng-repeat="ingredient in $ctrl.ingredients">
-              <div>
-                <ul>
-                  {{ingredient}}
-                </ul>
+            <div ng-repeat="ingredient in $ctrl.ingredients" >
+              <div ng-if="$ctrl.pantry.indexOf(ingredient) == -1">
+                <div>
+                  <ul style='color:red'>
+                    {{ingredient}}
+                  </ul>
+                </div>
+              </div>
+              <div ng-if="$ctrl.pantry.indexOf(ingredient) != -1">
+                <div>
+                  <ul style='color:green'>
+                    {{ingredient}}
+                  </ul>
+                </div>
               </div>
             </div>
+          </div>
         </div>
     </div>
 </div>
