@@ -5,7 +5,15 @@ function IngredientsService($http){
         //return ingr = $http.get('./ingredients.json')
         return data;
     }
-    
+
+    this.getPantry = function(){
+      return pantry;
+    }
+
+    this.addToPantry = function(ingred){
+      pantry.push(ingred);
+    }
+
     this.findRecipes = function(ingredient){
         recipes = []
         ingr = ingr.$$state.value.data
@@ -19,7 +27,7 @@ function IngredientsService($http){
         }
         return recipes
     }
-    
+
     this.findRecipe = function(ingred, recipe, data){
         for(idx in data.data){
             foodType = data.data[idx]
@@ -30,7 +38,7 @@ function IngredientsService($http){
                     for(idx3 in ing.recipes){
                         rec = ing.recipes[idx3]
                         if(rec.name == recipe){
-                            console.log("Found Recipe!: " + rec.name)  
+                            console.log("Found Recipe!: " + rec.name)
                             return rec
                         }
                     }
@@ -38,12 +46,14 @@ function IngredientsService($http){
             }
         }
     }
-    
+
+    var pantry = ['this', 'that', 'another item'];
+
     var data = [ {"type": "Protein", "items": [
     {"name":"Chicken", "img_url":"https://ewscripps.brightspotcdn.com/dims4/default/f3961eb/2147483647/strip/true/crop/1000x563+0+0/resize/1280x720!/quality/90/?url=https%3A%2F%2Fewscripps.brightspotcdn.com%2F77%2Fa4%2Fe0c7a0f44224bd77a617b3db83a7%2Fwptv-raw-chicken.jpg",
      "recipes":[
         {"id": 1, "name":"Chicken Enchiladas", "img_url":"https://food.fnr.sndimg.com/content/dam/images/food/fullset/2007/4/30/0/Cinco_Enchiladas.jpg.rend.hgtvcom.826.620.suffix/1382538528797.jpeg", "recipe_url": "https://www.foodnetwork.com/recipes/tyler-florence/chicken-enchiladas-recipe-1907241", "amount":1, "serves":8},
-        {"id":2, "name":"Chicken Parmesean", "img_url":"https://www.spendwithpennies.com/wp-content/uploads/2018/11/SpendWithPennies-Chicken-Parmesan-24.jpg","recipe_url":"https://www.allrecipes.com/recipe/223042/chicken-parmesan/","amount":1, "serves":4} 
+        {"id":2, "name":"Chicken Parmesean", "img_url":"https://www.spendwithpennies.com/wp-content/uploads/2018/11/SpendWithPennies-Chicken-Parmesan-24.jpg","recipe_url":"https://www.allrecipes.com/recipe/223042/chicken-parmesan/","amount":1, "serves":4}
      ]
     },
     {"name":"Beef", "img_url":"https://media.istockphoto.com/photos/profile-of-holstein-cow-5-years-old-standing-picture-id104783196?k=6&m=104783196&s=612x612&w=0&h=D6e72CqOGda0g_YYO3R3eIXq-yfgmfJxHKvpLQaePAs=",
@@ -100,9 +110,9 @@ function IngredientsService($http){
         {"id":22, "name":"Shrimp Fettuccine Alfredo","img_url":"https://hips.hearstapps.com/del.h-cdn.co/assets/17/26/1600x2399/gallery-1498853511-number2.jpg?resize=768:*","recipe_url":"https://www.delish.com/cooking/recipe-ideas/recipes/a54004/easy-shrimp-pasta-alfredo-recipe/","amount":1,"serves":4}
      ]
     }]}
-    
+
 ]
-    
+
 };
 
 angular
