@@ -6,6 +6,25 @@ function IngredientsService($http){
         return data;
     }
 
+    this.getResults = function(searchIngredient){
+        var recipes = [];
+        var categoryIdx;
+        var ingrIdx;
+        var recipeIdx;
+        for(categoryIdx in data){
+              var ingrs = data[categoryIdx].items;
+              for(ingrIdx in ingrs){
+                if(searchIngredient == null || (searchIngredient != null && ingrs[ingrIdx].name.toLowerCase() == searchIngredient.toLowerCase())){
+                  for(recipeIdx in ingrs[ingrIdx].recipes){
+                    var recipe = ingrs[ingrIdx].recipes[recipeIdx];
+                    recipes.push(recipe)
+                  }
+                }
+            }
+        }
+        return recipes;
+    }
+
     this.getPantry = function(){
       return pantry;
     }

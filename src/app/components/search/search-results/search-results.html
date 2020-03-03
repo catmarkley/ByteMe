@@ -2,13 +2,7 @@
     <div class="row">
         <div class="col center">
             <div class="card card-center spaced-out-md receipe-theme-border" style="width: 18rem;" ng-repeat="recipe in $ctrl.recipes">
-              <img ng-src="{{ recipe.img_url }}" class="card-img-top col_img" alt="...">
-              <div class="card-body center">
-                <div class="recipe-title-centered">
-                  <h5 class="card-title hold-size">{{ recipe.name }}</h5>
-                </div>
-                <a ng-click="$ctrl.goToRecipe($event, recipe.id)" class="btn recipe-theme">Go to Recipe</a>
-              </div>
+              <search-result recipe="recipe"></search-result>
             </div>
         </div>
     </div>
