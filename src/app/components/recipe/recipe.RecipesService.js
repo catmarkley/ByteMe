@@ -1,6 +1,5 @@
 function RecipesService($http){
     this.getRecipes = function(){
-        //return ingr = $http.get('./ingredients.json')
         return data;
     }
 

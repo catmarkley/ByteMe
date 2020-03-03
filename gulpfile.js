@@ -80,7 +80,7 @@ gulp.task('styles', function () {
 gulp.task('watch', function() {
     livereload.listen();
     gulp.watch([styles, scripts, templates], function(event){
-        runSequence('clean', 'scripts', 'styles', 'copy-html', 'copy-img', 'copy-fonts', 'build_reload');
+        runSequence('clean', 'scripts', 'styles', 'copy-html', 'copy-img', 'copy-fonts', 'build_reload', 'copy-json');
     });
 });
 
@@ -187,6 +187,13 @@ gulp.task('copy-img', function () {
         .pipe(gulp.dest('dist/img'));
 });
 
+// copy jsons
+gulp.task('copy-json', function () {
+    return gulp
+        .src('src/json/**/*')
+        .pipe(gulp.dest('dist/json'));
+});
+
 // copy fonts
 gulp.task('copy-fonts', function () {
     return gulp
@@ -206,9 +213,9 @@ gulp.task('connect-app', function () {
 });
 
 gulp.task('default', ['clean'], function (callback) {
-    runSequence('scripts', 'styles', 'copy-html', 'copy-img', 'copy-fonts', 'connect-app', 'watch', callback);
+    runSequence('scripts', 'styles', 'copy-html', 'copy-img', 'copy-fonts', 'copy-json', 'connect-app', 'watch', callback);
 });
 
 gulp.task('production', ['clean'], function (callback) {
-    runSequence('scripts', 'styles', 'copy-html', 'copy-img', 'copy-fonts', callback);
+    runSequence('scripts', 'styles', 'copy-html', 'copy-img', 'copy-fonts', 'copy-json', callback);
 });
