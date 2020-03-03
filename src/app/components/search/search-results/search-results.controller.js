@@ -5,8 +5,10 @@ function SearchResultsController(IngredientsService, $state) {
 
     ctrl.$onInit = function () {
       ctrl.recipeId = '';
-      var recipes = IngredientsService.getResults(searchIngredient);
-      ctrl.recipes = recipes;
+      IngredientsService.getResults().then(function(recipes){
+        recipes = IngredientsService.formatResults(recipes, searchIngredient)
+        ctrl.recipes = recipes;
+      })
     }
 }
 
