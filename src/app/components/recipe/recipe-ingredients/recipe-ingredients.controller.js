@@ -1,10 +1,12 @@
-function RecipeIngredientsController(RecipesService, $state) {
+function RecipeIngredientsController(RecipesService, IngredientsService, $state) {
   var ctrl = this;
   var recipeId = $state.params.id;
   console.log(recipeId);
 
   ctrl.$onInit = function () {
     var data = RecipesService.getRecipes();
+    var pantry = IngredientsService.getPantry();
+    console.log(pantry);
     console.log(data);
     var ingredients = [];
     var i;
@@ -31,6 +33,7 @@ function RecipeIngredientsController(RecipesService, $state) {
     console.log(ingredient);
     ctrl.ingredients = ingredient;
     ctrl.name = name;
+    ctrl.pantry = pantry;
 
   }
 }
