@@ -1,4 +1,7 @@
 var recipeIngredients = {
+  bindings: {
+    recipeId: '='
+  },
   templateUrl: './recipe-ingredients.html',
   controller: 'RecipeIngredientsController'
 };

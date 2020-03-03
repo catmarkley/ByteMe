@@ -1,6 +1,14 @@
-<div class='recipe'>
-  <div>
-    hi
-  </div>
-  <div ui-view></div>
+<div class="container spaced-out-sm">
+    <div class="row">
+        <div class="col center">
+          <h1> {{$ctrl.name}}</h1>
+            <div ng-repeat="ingredient in $ctrl.ingredients">
+              <div>
+                <ul>
+                  {{ingredient}}
+                </ul>
+              </div>
+            </div>
+        </div>
+    </div>
 </div>

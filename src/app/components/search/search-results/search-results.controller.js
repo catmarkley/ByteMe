@@ -3,12 +3,8 @@ function SearchResultsController(IngredientsService, $state) {
 
     var searchIngredient = $state.params.ingredient;
 
-
-    ctrl.goToRecipe = function () {
-      $state.go('recipe');
-
-    }
     ctrl.$onInit = function () {
+      ctrl.recipeId = '';
       var data = IngredientsService.getIngredients();
       //TODO: tranfer the below code into the Ingredients Service
       console.log("Done");
@@ -29,6 +25,15 @@ function SearchResultsController(IngredientsService, $state) {
         }
       }
       ctrl.recipes = recipes;
+    }
+
+    ctrl.goToRecipe = function (event, recipeId) {
+      console.log("Clicked Go to Recipe!");
+      console.log(recipeId);
+      $state.go('recipe', {
+        id: recipeId
+      });
+
     }
 
 }
