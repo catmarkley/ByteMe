@@ -9,7 +9,7 @@ var searchBar = {
 angular
   .module('components.search')
   .component('searchBar', searchBar)
-  .config(function ($stateProvider){
+  .config(function ($stateProvider, $urlRouterProvider){
     $stateProvider
       .state('search', {
         parent: 'app',
@@ -17,4 +17,5 @@ angular
         url: '/search',
         component: 'searchBar'
       })
+    $urlRouterProvider.otherwise('/app/search')
 });

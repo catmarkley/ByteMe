@@ -12,7 +12,6 @@ function IngredientsService($http){
 
     this.formatResults = function(unformattedResults, searchIngredient){
       var data = unformattedResults.data
-      console.log('data', data)
       var recipes = [];
       var categoryIdx;
       var ingrIdx;

@@ -6,9 +6,7 @@ function SearchResultsController(IngredientsService, $state) {
     ctrl.$onInit = function () {
       ctrl.recipeId = '';
       IngredientsService.getResults().then(function(recipes){
-        console.log('ctrl rec1:', recipes)
         recipes = IngredientsService.formatResults(recipes, searchIngredient)
-        console.log('ctrl rec2:', recipes)
         ctrl.recipes = recipes;
       })
     }
