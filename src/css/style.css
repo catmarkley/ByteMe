@@ -69,7 +69,10 @@
   text-align: -webkit-center;
   margin-bottom: 10px;
 }
-
+.recipe-name{
+  color: #4285F4;
+  font-style: italic;
+}
 .hold-size{
   height: 48px;
   display: table-cell;
@@ -78,7 +81,6 @@
 
 .logo-container{
     text-align: center;
-    margin-bottom: 0px
 }
 .logo-img{
     width: 150px;
@@ -86,8 +88,22 @@
 
 #mainLogo{
   width: 300px;
+  margin-top: 15px
 }
 
+.ingr-failure{
+  color: #DB4437;
+}
+.ingr-success{
+  color: #0F9D58;
+}
+.ingredient-name{
+  margin-bottom: 10px;
+}
+.ingredient-list{
+  list-style-type: none;
+  padding: 0px;
+}
 .search-box{
     margin: 15px;
     padding: 0px;

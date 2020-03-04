@@ -1,24 +1,18 @@
 <div class="container spaced-out-sm">
     <div class="row">
         <div class="col center">
-          <h1> {{$ctrl.name}}</h1>
-            <div ng-repeat="ingredient in $ctrl.ingredients" >
+          <h1 class="recipe-name">{{$ctrl.name}}</h1>
+
+          <ul class="ingredient-list">
+            <div ng-repeat="ingredient in $ctrl.ingredients">
               <div ng-if="$ctrl.pantry.indexOf(ingredient) == -1">
-                <div>
-                  <ul style='color:red'>
-                    {{ingredient}}
-                  </ul>
-                </div>
+                <li class="ingredient-name ingr-failure">{{ingredient}}</li>
               </div>
               <div ng-if="$ctrl.pantry.indexOf(ingredient) != -1">
-                <div>
-                  <ul style='color:green'>
-                    {{ingredient}}
-                  </ul>
-                </div>
+                <li class="ingredient-name ingr-success">{{ingredient}}</li>
               </div>
             </div>
-          </div>
+          </ul>
         </div>
     </div>
 </div>
