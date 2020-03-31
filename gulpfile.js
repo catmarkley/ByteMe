@@ -31,7 +31,7 @@ var argv = yargs.argv,
     productionServerURL = '',
     templates = ['src/app/**/*.html'],
     modules = ['@uirouter/angularjs/release/angular-ui-router.js',
-    '@uirouter/visualizer/bundles/visualizer.min.js'
+    '@uirouter/visualizer/bundles/visualizer.min.js', 'parse/dist/parse.min.js'
     //'parse/dist/parse.min.js',
     //'angular-parse/angular-parse.js',
   ]; // these are 3rd party libraries in the node_modules folder NOT *.module.js files
