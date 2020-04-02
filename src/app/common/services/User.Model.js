@@ -1,10 +1,10 @@
-class PersonModel {
-    constructor(Parse, PersonModel) {
+class UserModel {
+    constructor(Parse, UserModel) {
         this.Parse = Parse;
-        this.PersonModel = PersonModel;
+        this.UserModel = UserModel;
         this.data = {};
         this.collection = [];
-        this.name = 'Person';
+        this.name = 'User';
         this.fields = [
             'name'
         ];
@@ -13,7 +13,7 @@ class PersonModel {
         if (angular.isUndefined(obj)) {
             const parseObject = new this.Parse.Object(this.name)
             this.Parse.defineAttributes(parseObject, this.fields);
-            parseObject.name = new this.Parse.Object(this.PersonModel.name)
+            parseObject.name = new this.Parse.Object(this.UserModel.name)
             //this.Parse.defineAttributes(parseObject.name, this.FoodModel.fields);
             return parseObject;
         } else {
@@ -34,19 +34,19 @@ class PersonModel {
             .catch(error => Promise.reject(error));
     }
 
-    getByPersonName(name) {
+    getByUserName(name) {
         return new this.Parse.Query(this.New())
             .include('name')
             .equalTo('name', name)
             .first()
-            .then(persons => {
-                persons.forEach(person => {
-                    this.Parse.defineAttributes(person, this.fields);
+            .then(users => {
+                users.forEach(user => {
+                    this.Parse.defineAttributes(user, this.fields);
                     //this.Parse.defineAttributes(recipe.name, this.RecipesModel.fields);
                 })
-                this.collection = persons;
-                console.log("getByPersonName", this.collection)
-                return Promise.resolve(persons);
+                this.collection = users;
+                console.log("getByUserName", this.collection)
+                return Promise.resolve(users);
             })
             .catch(error => Promise.reject(error));
     }
@@ -54,4 +54,4 @@ class PersonModel {
 
 angular
     .module('common')
-    .service('PersonModel', PersonModel);
+    .service('UserModel', UserModel);
