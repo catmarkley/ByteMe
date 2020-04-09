@@ -1,17 +1,15 @@
 function SearchPantryController(PantryModel){
-  'ngInject';
   var ctrl = this;
 
   ctrl.$onInit = function () {
     // The pantry service is called to populate the pantry list
-    PantryModel.getByUser('Emma').then(function (results){
+    //PantryModel.getByUser(Parse.User.current()).then(function (results){
+    PantryModel.getById('Kpzyh36xrV').then(function (results){
       ctrl.pantryList = results;
-      console.log('hello',pantry);
+      console.log('hello',results);
     });
   }
 }
-
-SearchPantryController.$inject = ["PantryModel"];
 
 angular
   .module('components.search')
