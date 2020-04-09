@@ -34,6 +34,24 @@ class FoodModel {
             .catch(error => Promise.reject(error));
     }
 
+    getAllFood(){
+      return new this.Parse.Query(this.New())
+          .include('id')
+          .include('name')
+          .include('imgUrl')
+          .find()
+          .then(foods => {
+              foods.forEach(food => {
+                  this.Parse.defineAttributes(food, this.fields);
+              })
+              this.collection = foods;
+              console.log("getByFoodName", this.collection)
+              return Promise.resolve(foods);
+          })
+          .catch(error => Promise.reject(error));
+  }
+
+
     getByFoodName(name) {
         return new this.Parse.Query(this.New())
             .include('name')
