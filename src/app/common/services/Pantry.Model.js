@@ -41,30 +41,24 @@ class PantryModel {
             .catch(error => Promise.reject(error));
     }
     getByUser(user) {
-        return new Parse.Query('User')
-          .include('id')
-          .equalTo('id', user)
-          .first()
-          .then( person => {
-            return new this.Parse.Query(this.New())
-                .include('user')
-                .include('food')
-                //.equalTo('user', person.id)
-                .equalTo('user', { "__type": "Pointer", "className": "_User", "objectId": user }) 
-                //.equalTo('user.id', user)
-                //.matchesQuery('user', person)
-                .find()
-                .then(result => {
-                  this.Parse.defineAttributes(result, this.fields);
-                  this.data = result;
-                  //result = result[0]['attributes']['food']['attributes']['name'];
-                  //console.log("getByUser", result);
-                  return Promise.resolve(result);
-                })
-                .catch(error => Promise.reject(error));
-          }
-
-          )
+        
+        var personQuery = new Parse.Query('User');
+        personQuery.equalTo('objectId', user);
+        
+        return new this.Parse.Query(this.New())
+            .include('user')
+            .include('food')
+            //.equalTo('user', { "__type": "Pointer", "className": "_User", "objectId": user })
+            .matchesQuery('user', personQuery)
+            .find()
+            .then(result => {
+              this.Parse.defineAttributes(result, this.fields);
+              this.data = result;
+              //result = result[0]['attributes']['food']['attributes']['name'];
+              return Promise.resolve(result);
+            })
+            .catch(error => Promise.reject(error));
+        
     }
 
     getByUserName(name){
