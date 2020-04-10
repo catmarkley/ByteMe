@@ -12,6 +12,14 @@ function SearchResultsController(IngredientsService, $state) {
         ctrl.recipes = recipes;
       })
     }
+    
+    
+    ctrl.goToRecipe = function(event){
+      $state.go('recipe', {
+        id: event.recipeId
+      });
+    }
+
 }
 
 angular

@@ -1,13 +1,14 @@
 function SearchResultController(IngredientsService, $state) {
     var ctrl = this;
-
-    // If the 'Go To Recipe' button for this recipe is clicked, go to its recipe page
-    ctrl.goToRecipe = function (event) {
-      console.log("Clicked Go to Recipe!");
-      $state.go('recipe', {
-        id: ctrl.recipe.id
-      });
-    }
+    
+    // When the 'Go To Recipe' button is clicked, send the event to the parent
+    ctrl.goToRecipe = function(){
+        ctrl.onNavigate({
+            $event: {
+                recipeId: ctrl.recipe.id
+            }
+        });
+    };
 
 }
 
