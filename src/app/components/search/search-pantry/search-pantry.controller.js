@@ -11,8 +11,13 @@ function SearchPantryController(PantryModel){
         result = results[i]['attributes']['food']['attributes']['name'];
         ctrl.pantryList.push(result)
       }
-      console.log('hello',ctrl.pantryList);
     });
+  }
+
+  this.addToPantry = function(ingred) {
+    if ($ctrl.pantryList.indexOf(ingred)== -1){
+      $ctrl.pantryList.push(ingred);
+    }
   }
 }
 

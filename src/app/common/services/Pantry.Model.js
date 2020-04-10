@@ -58,7 +58,7 @@ class PantryModel {
                   this.Parse.defineAttributes(result, this.fields);
                   this.data = result;
                   //result = result[0]['attributes']['food']['attributes']['name'];
-                  console.log("getByUser", result);
+                  //console.log("getByUser", result);
                   return Promise.resolve(result);
                 })
                 .catch(error => Promise.reject(error));
@@ -93,6 +93,23 @@ class PantryModel {
               return Promise.resolve(result);
             })
             .catch(error => Promise.reject(error));
+    }
+
+    addToPantry(food, name, amount, unit) {
+      const newFood = Parse.Object.extend(this.name);
+      const newFoods = new newFood();
+      //HARD CODED USER ID
+      newFoods.set("user", { "__type": "Pointer", "className": "_User", "objectId": 'ODSERISQ1h' });
+      newFoods.set("food", { "__type": "Pointer", "className": "Food", "objectId": food });
+      //HARD CODED AMOUNT AND UNIT
+      newFoods.set("amount", amount);
+      newFoods.set("unit", unit);
+      newFoods.save()
+      .then((Food)=> {
+        console.log('New food added to pantry' + food);
+      }, (error)=> {
+        console.log('Error to add to pantry', error)
+      })
     }
 }
 

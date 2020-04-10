@@ -45,7 +45,6 @@ class FoodModel {
                   this.Parse.defineAttributes(food, this.fields);
               })
               this.collection = foods;
-              console.log("getByFoodName", this.collection)
               return Promise.resolve(foods);
           })
           .catch(error => Promise.reject(error));

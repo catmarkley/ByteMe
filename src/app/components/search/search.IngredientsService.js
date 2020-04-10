@@ -27,7 +27,7 @@ function IngredientsService($http){
               }
           }
       }
-      console.log('recipes', recipes)
+      //console.log('recipes', recipes)
       return recipes;
     }
 
@@ -35,10 +35,13 @@ function IngredientsService($http){
       return pantry;
     }
 
-    this.addToPantry = function(ingred){
+  /*  this.addToPantry = function(ingred){
       if(pantry.indexOf(ingred) == -1){
         pantry.push(ingred);
       }
+    }*/
+    this.addToPantry = function(ingred){
+      this.search.SearchPantryController.addToPantry(ingred);
     }
 
     this.findRecipes = function(ingredient){
