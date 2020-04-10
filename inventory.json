@@ -1,0 +1,22 @@
+[ {"type": "Protein", 
+   "items": [
+       {"name":"Chicken","amount":1,"units":"Whole"},
+       {"name":"Beef","amount":1,"units":"Pound(s)"},
+       {"name":"Shrimp","amount":1,"units":"Pound(s)"}
+   ]
+  },
+  {"type" : "Vegetable", 
+   "items": [
+       {"name":"Green Beans","amount":1,"units":"Pounds"},
+       {"name":"Bell Peppers","amount":1,"units":"Whole"},
+       {"name":"Broccoli","amount":1,"units":"Pound(s)"}
+   ]
+  },
+  {"type":"Starch", 
+   "items":[
+      {"name":"Potato","amount":1,"units":"Whole"},
+      {"name":"Pasta","amount":1,"units":"Pound(s)"}
+   ]
+  }
+    
+]

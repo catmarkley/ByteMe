@@ -1,7 +1,6 @@
 class RecipesModel {
-    constructor(Parse, RecipesModel) {
+    constructor(Parse) {
         this.Parse = Parse;
-        this.RecipesModel = RecipesModel;
         this.data = {};
         this.collection = [];
         this.name = 'Recipes';
@@ -16,7 +15,7 @@ class RecipesModel {
         if (angular.isUndefined(obj)) {
             const parseObject = new this.Parse.Object(this.name)
             this.Parse.defineAttributes(parseObject, this.fields);
-            parseObject.name = new this.Parse.Object(this.RecipesModel.name)
+            //parseObject.name = new this.Parse.Object(this.RecipesModel.name)
             //this.Parse.defineAttributes(parseObject.name, this.RecipesModel.fields);
             return parseObject;
         } else {

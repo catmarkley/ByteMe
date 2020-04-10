@@ -41,20 +41,44 @@ class PantryModel {
             .catch(error => Promise.reject(error));
     }
     getByUser(user) {
-        return new this.Parse.Query(this.New())
-            .include('user')
-            .include('food')
-            .equalTo('user', user)
-            .find()
-            .then(result => {
-              this.Parse.defineAttributes(result, this.fields);
-              this.data = result;
-              console.log("getByUser", result);
-              return Promise.resolve(result);
-            })
-            .catch(error => Promise.reject(error));
+        return new Parse.Query('User')
+          .include('id')
+          .equalTo('id', user)
+          .first()
+          .then( person => {
+            return new this.Parse.Query(this.New())
+                .include('user')
+                .include('food')
+                //.equalTo('user', person.id)
+                .equalTo('user', { "__type": "Pointer", "className": "_User", "objectId": user }) 
+                //.equalTo('user.id', user)
+                //.matchesQuery('user', person)
+                .find()
+                .then(result => {
+                  this.Parse.defineAttributes(result, this.fields);
+                  this.data = result;
+                  //result = result[0]['attributes']['food']['attributes']['name'];
+                  //console.log("getByUser", result);
+                  return Promise.resolve(result);
+                })
+                .catch(error => Promise.reject(error));
+          }
+
+          )
     }
 
+    getByUserName(name){
+        return new this.Parse.Query(this.New())
+          .get(id)
+          .then(result => {
+              console.log('result', result)
+              this.Parse.defineAttributes(result, this.fields);
+              this.data = result;
+              return Promise.resolve(result);
+          })
+          .catch(error => Promise.reject(error));
+
+    }
     getByUserAndFood(user, food) {
         return new this.Parse.Query(this.New())
             .include('user')
@@ -69,6 +93,23 @@ class PantryModel {
               return Promise.resolve(result);
             })
             .catch(error => Promise.reject(error));
+    }
+
+    addToPantry(food, name) {
+      const newFood = Parse.Object.extend(this.name);
+      const newFoods = new newFood();
+      //HARD CODED USER ID
+      newFoods.set("user", { "__type": "Pointer", "className": "_User", "objectId": 'ODSERISQ1h' });
+      newFoods.set("food", { "__type": "Pointer", "className": "Food", "objectId": food });
+      //HARD CODED AMOUNT AND UNIT
+      newFoods.set("amount", 1);
+      newFoods.set("unit", "Tablespoon(s)");
+      newFoods.save()
+      .then((Food)=> {
+        console.log('New food added to pantry' + food);
+      }, (error)=> {
+        console.log('Error to add to pantry', error)
+      })
     }
 }
 

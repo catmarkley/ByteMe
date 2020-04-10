@@ -2,13 +2,19 @@
     <div class="container spaced-out-sm">
         <div class="container search-box">
             <div class="input-group input-group-lg">
-                <input type="text" class="form-control" placeholder="Enter an ingredient..." ng-model="$ctrl.searchText">
 
+                <input type="text" class="form-control autocomplete" placeholder="Enter an ingredient..." ng-model="$ctrl.searchText">
+                <!--<input type="text" name="food" id="food" ng-model="$ctrl.searchText" ng-keyup="cname(food)" placeholder="Ingredient" class="form-control" />
+            <ul class="list-group" ng-hide="hidethis">
+               <li class="list-group-item" ng-repeat="food in $ctrl.foodList" ng-click="fillInputBox(food)">{{food}}</li>
+            </ul>-->
                 <div class="input-group-append">
                     <button ng-click="$ctrl.addIngr($event, $ctrl.searchText)" class="btn btn-outline-secondary" id="inputGroup-sizing-lg">Add</button>
                     <button ng-click="$ctrl.findRecipe($event, $ctrl.searchText)" class="btn btn-outline-secondary" id="inputGroup-sizing-lg">Find Recipes</button>
                 </div>
             </div>
+
+
         </div>
         <search-pantry></search-pantry>
         <div ui-view></div>
