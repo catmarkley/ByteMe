@@ -95,15 +95,15 @@ class PantryModel {
             .catch(error => Promise.reject(error));
     }
 
-    addToPantry(food, name) {
+    addToPantry(food, name, amount, unit) {
       const newFood = Parse.Object.extend(this.name);
       const newFoods = new newFood();
       //HARD CODED USER ID
       newFoods.set("user", { "__type": "Pointer", "className": "_User", "objectId": 'ODSERISQ1h' });
       newFoods.set("food", { "__type": "Pointer", "className": "Food", "objectId": food });
       //HARD CODED AMOUNT AND UNIT
-      newFoods.set("amount", 1);
-      newFoods.set("unit", "Tablespoon(s)");
+      newFoods.set("amount", amount);
+      newFoods.set("unit", unit);
       newFoods.save()
       .then((Food)=> {
         console.log('New food added to pantry' + food);
