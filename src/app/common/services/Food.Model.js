@@ -1,7 +1,6 @@
 class FoodModel {
-    constructor(Parse, FoodModel) {
+    constructor(Parse) {
         this.Parse = Parse;
-        this.FoodModel = FoodModel;
         this.data = {};
         this.collection = [];
         this.name = 'Food';
@@ -14,7 +13,7 @@ class FoodModel {
         if (angular.isUndefined(obj)) {
             const parseObject = new this.Parse.Object(this.name)
             this.Parse.defineAttributes(parseObject, this.fields);
-            parseObject.name = new this.Parse.Object(this.FoodModel.name)
+            //parseObject.name = new this.Parse.Object(this.FoodModel.name)
             //this.Parse.defineAttributes(parseObject.name, this.FoodModel.fields);
             return parseObject;
         } else {
@@ -34,6 +33,24 @@ class FoodModel {
             })
             .catch(error => Promise.reject(error));
     }
+
+    getAllFood(){
+      return new this.Parse.Query(this.New())
+          .include('id')
+          .include('name')
+          .include('imgUrl')
+          .find()
+          .then(foods => {
+              foods.forEach(food => {
+                  this.Parse.defineAttributes(food, this.fields);
+              })
+              this.collection = foods;
+              console.log("getByFoodName", this.collection)
+              return Promise.resolve(foods);
+          })
+          .catch(error => Promise.reject(error));
+  }
+
 
     getByFoodName(name) {
         return new this.Parse.Query(this.New())
