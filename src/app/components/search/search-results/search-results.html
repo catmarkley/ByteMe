@@ -2,7 +2,7 @@
     <div class="row">
         <div class="col center">
             <div class="card card-center spaced-out-md receipe-theme-border" style="width: 18rem;" ng-repeat="recipe in $ctrl.recipes">
-              <search-result recipe="recipe"></search-result>
+              <search-result recipe="recipe" on-navigate="$ctrl.goToRecipe($event);"></search-result>
             </div>
         </div>
     </div>
