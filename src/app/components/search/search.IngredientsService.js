@@ -1,16 +1,16 @@
 //Data service
 function IngredientsService($http){
     var ingr = {}
-    this.getIngredients = function(){
+    //this.getIngredients = function(){
         //return ingr = $http.get('/json/ingredients.json')
         //return data;
-    }
+    //}
 
-    this.getResults = function(){
-      return $http.get('/json/ingredients.json')
-    }
+    //this.getResults = function(){
+      //return $http.get('/json/ingredients.json')
+    //}
 
-    this.formatResults = function(unformattedResults, searchIngredient){
+    /*this.formatResults = function(unformattedResults, searchIngredient){
       var data = unformattedResults.data
       var recipes = [];
       var categoryIdx;
@@ -29,20 +29,20 @@ function IngredientsService($http){
       }
       //console.log('recipes', recipes)
       return recipes;
-    }
+    }*/
 
-    this.getPantry = function(){
+    /*this.getPantry = function(){
       return pantry;
-    }
+    }*/
 
   /*  this.addToPantry = function(ingred){
       if(pantry.indexOf(ingred) == -1){
         pantry.push(ingred);
       }
     }*/
-    this.addToPantry = function(ingred){
+    /*this.addToPantry = function(ingred){
       this.search.SearchPantryController.addToPantry(ingred);
-    }
+    }*/
 
     this.findRecipes = function(ingredient){
         recipes = []

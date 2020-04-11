@@ -1,6 +1,7 @@
 var searchResult = {
   bindings: {
     recipe: '<',
+    onNavigate: '&'
   },
   templateUrl: './search-result.html',
   controller: 'SearchResultController'

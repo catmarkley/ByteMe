@@ -4,6 +4,7 @@ function SearchBarController(FoodModel, PantryModel, IngredientsService, $state)
     ctrl.$onInit = function () {
       // Initializes the text in the search box
       ctrl.searchText = '';
+      ctrl.searchRecipeText = '';
       ctrl.searchAmount = undefined;
       ctrl.searchUnit = '';
       var result;
@@ -21,20 +22,19 @@ function SearchBarController(FoodModel, PantryModel, IngredientsService, $state)
     ctrl.addIngr = function(event, searchText, searchAmount, searchUnit){
       // Adds the text from the input box into the pantry using the ingredient service
       //IngredientsService.addToPantry(searchText);
-      FoodModel.getByFoodName(searchText).then(function(results){
-        console.log('got food item', results[0]['id']);
-        PantryModel.addToPantry(results[0]['id'], results[0]['name'], searchAmount, searchUnit).then(function(r){
-          console.log('added to pantry', results[0]['id'])
-          //ctrl.pantryList.push(results[0]['name'])
+        PantryModel.addToPantry(searchText, searchAmount, searchUnit);
+        //SearchPantryController.ctrl.pantryList.push(searchText);
+        $state.go('search',{
+          controller: 'SearchPantryController',
+          text: searchText
         })
-      })
     }
 
-    ctrl.findRecipe = function(event, searchText){
+    ctrl.findRecipe = function(event, searchRecipeText){
       // Redirects to the results state (url: search/:ingredient)
       // This state displays results based on what is in the search box
       $state.go('results', {
-        ingredient: searchText
+        ingredient: searchRecipeText
       });
     }
 

@@ -8,17 +8,18 @@ function SearchPantryController(PantryModel){
     ctrl.pantryList = [];
     PantryModel.getByUser('ODSERISQ1h').then(function (results) {
       for(var i=0; i < results.length; i++){
+        //console.log(results[i]['attributes']['food']['attributes']['name']);
         result = results[i]['attributes']['food']['attributes']['name'];
         ctrl.pantryList.push(result)
       }
     });
   }
 
-  this.addToPantry = function(ingred) {
-    if ($ctrl.pantryList.indexOf(ingred)== -1){
-      $ctrl.pantryList.push(ingred);
+  /*this.addToPantry = function(ingred) {
+    if (ctrl.pantryList.indexOf(ingred)== -1){
+      ctrl.pantryList.push(ingred);
     }
-  }
+  }*/
 }
 
 angular

@@ -55,6 +55,7 @@ class FoodModel {
         return new this.Parse.Query(this.New())
             .include('name')
             .include('imgUrl')
+            .include('id')
             .equalTo('name', name)
             .find()
             .then(foods => {
