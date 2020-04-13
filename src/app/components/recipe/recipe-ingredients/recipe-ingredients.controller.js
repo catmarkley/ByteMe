@@ -1,14 +1,12 @@
-function RecipeIngredientsController(IngredientsModel, RecipesModel, RecipesService, IngredientsService, $state) {
+function RecipeIngredientsController(PantryModel, IngredientsModel, RecipesModel, $state) {
     var ctrl = this;
     var recipeId = $state.params.id;
     console.log(recipeId);
     ctrl.ingredients = [];
     ctrl.name = '';
+    ctrl.pantry = [];
     
   ctrl.$onInit = function () {
-    // Get the pantry list
-    //var pantry = IngredientsService.getPantry()
-
 
     // Get the recipe object
     RecipesModel.getById(recipeId).then(function(recipe){
@@ -19,40 +17,19 @@ function RecipeIngredientsController(IngredientsModel, RecipesModel, RecipesServ
             for (var i = 0; i < results.length; i++){
                 ctrl.ingredients.push(results[i].attributes.food.attributes.name)
             }
-            console.log(ctrl.ingredients)
         })
     });
     
-    
-    
-    /*// Get the list of all recipes via HTTP
-    RecipesService.getRecipes().then(function(recipes){
-      recipes = recipes.data
-      var ingredients = [];
-      var i;
-
-      // Iterate over all recipes
-      for(i in recipes){
-        if(recipes[i]["id"] == recipeId){
-          ingredients = recipes[i];
-        }
+    // Get the pantry
+    var result;
+    PantryModel.getByUser('ODSERISQ1h').then(function (results) {
+      for(var i=0; i < results.length; i++){
+        //console.log(results[i]['attributes']['food']['attributes']['name']);
+        result = results[i]['attributes']['food']['attributes']['name'];
+        ctrl.pantry.push(result)
       }
-      var name;
-      name = ingredients['name'];
-      var ingr;
-      ingredients = ingredients['ingredients'];
-      var x;
-      var ingredient = [];
-      // Add name of ingredients to ingredients list
-      for(x in ingredients){
-        ingredient.push(ingredients[x]['name']);
-      }
+    });
 
-      console.log(ingredient);
-      ctrl.ingredients = ingredient;
-      ctrl.name = name;
-      ctrl.pantry = pantry;
-    })*/
   }
 }
 
