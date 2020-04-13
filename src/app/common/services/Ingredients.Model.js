@@ -40,6 +40,23 @@ class IngredientsModel {
             })
             .catch(error => Promise.reject(error));
     }
+    
+    getByRecipe(recipe) {
+        return new this.Parse.Query(this.New())
+            .include('recipe')
+            .include('food')
+            .include('id')
+            .include('amount')
+            .include('unit')
+            .equalTo('recipe', recipe)
+            .find()
+            .then(result => {
+                this.Parse.defineAttributes(result, this.fields);
+                this.data = result;
+                return Promise.resolve(result);
+            })
+            .catch(error => Promise.reject(error));
+    }
 
     getByRecipeAndFood(recipe, food) {
         return new this.Parse.Query(this.New())
