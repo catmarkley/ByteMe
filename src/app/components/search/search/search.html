@@ -1,0 +1,7 @@
+<div class="search">
+    <div class="container spaced-out-sm">
+      <search-bar on-add="$ctrl.addIngredient($event);" on-search="$ctrl.findRecipe($event);"></search-bar>
+      <search-pantry pantry-list="$ctrl.pantryList"></search-pantry>
+      <div ui-view></div>
+    </div>
+</div>

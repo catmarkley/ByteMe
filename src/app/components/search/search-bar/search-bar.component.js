@@ -1,6 +1,7 @@
 var searchBar = {
   bindings: {
-    searchText: '='
+    onAdd: '&',
+    onSearch: '&'
   },
   templateUrl: './search-bar.html',
   controller: 'SearchBarController'
@@ -8,14 +9,4 @@ var searchBar = {
 
 angular
   .module('components.search')
-  .component('searchBar', searchBar)
-  .config(function ($stateProvider, $urlRouterProvider){
-    $stateProvider
-      .state('search', {
-        parent: 'app',
-        redirectTo: 'results',
-        url: '/search',
-        component: 'searchBar'
-      })
-    $urlRouterProvider.otherwise('/app/search')
-});
+  .component('searchBar', searchBar);
