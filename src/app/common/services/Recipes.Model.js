@@ -28,7 +28,7 @@ class RecipesModel {
         return new this.Parse.Query(this.New())
             .get(id)
             .then(result => {
-                console.log('result', result)
+                //console.log('result', result)
                 this.Parse.defineAttributes(result, this.fields);
                 this.data = result;
                 return Promise.resolve(result);
@@ -38,7 +38,6 @@ class RecipesModel {
 
     getAllRecipes() {
         return new this.Parse.Query(this.New())
-            .include('id')
             .include('name')
             .include('imgUrl')
             .include('recipeUrl')

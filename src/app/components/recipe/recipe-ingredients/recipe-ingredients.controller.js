@@ -1,14 +1,31 @@
-function RecipeIngredientsController(RecipesService, IngredientsService, $state) {
-  var ctrl = this;
-  var recipeId = $state.params.id;
-  console.log(recipeId);
-
+function RecipeIngredientsController(IngredientsModel, RecipesModel, RecipesService, IngredientsService, $state) {
+    var ctrl = this;
+    var recipeId = $state.params.id;
+    console.log(recipeId);
+    ctrl.ingredients = [];
+    ctrl.name = '';
+    
   ctrl.$onInit = function () {
     // Get the pantry list
-    var pantry = IngredientsService.getPantry()
+    //var pantry = IngredientsService.getPantry()
 
 
-    // Get the list of all recipes via HTTP
+    // Get the recipe object
+    RecipesModel.getById(recipeId).then(function(recipe){
+        console.log('Here is the recipe: ', recipe);
+        ctrl.name = recipe.name;
+        IngredientsModel.getByRecipe(recipe).then(function(results){
+            console.log('Here is the ingredients result: ', results);
+            for (var i = 0; i < results.length; i++){
+                ctrl.ingredients.push(results[i].attributes.food.attributes.name)
+            }
+            console.log(ctrl.ingredients)
+        })
+    });
+    
+    
+    
+    /*// Get the list of all recipes via HTTP
     RecipesService.getRecipes().then(function(recipes){
       recipes = recipes.data
       var ingredients = [];
@@ -35,7 +52,7 @@ function RecipeIngredientsController(RecipesService, IngredientsService, $state)
       ctrl.ingredients = ingredient;
       ctrl.name = name;
       ctrl.pantry = pantry;
-    })
+    })*/
   }
 }
 
