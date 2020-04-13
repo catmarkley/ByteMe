@@ -41,10 +41,10 @@ class PantryModel {
             .catch(error => Promise.reject(error));
     }
     getByUser(user) {
-        
+
         var personQuery = new Parse.Query('User');
         personQuery.equalTo('objectId', user);
-        
+
         return new this.Parse.Query(this.New())
             .include('user')
             .include('food')
@@ -58,7 +58,7 @@ class PantryModel {
               return Promise.resolve(result);
             })
             .catch(error => Promise.reject(error));
-        
+
     }
 
     getByUserName(name){
@@ -89,21 +89,25 @@ class PantryModel {
             .catch(error => Promise.reject(error));
     }
 
-    addToPantry(food, name, amount, unit) {
+    addToPantry(name, amount, unit) {
       const newFood = Parse.Object.extend(this.name);
       const newFoods = new newFood();
       //HARD CODED USER ID
-      newFoods.set("user", { "__type": "Pointer", "className": "_User", "objectId": 'ODSERISQ1h' });
-      newFoods.set("food", { "__type": "Pointer", "className": "Food", "objectId": food });
-      //HARD CODED AMOUNT AND UNIT
-      newFoods.set("amount", amount);
-      newFoods.set("unit", unit);
-      newFoods.save()
-      .then((Food)=> {
-        console.log('New food added to pantry' + food);
-      }, (error)=> {
-        console.log('Error to add to pantry', error)
+      this.FoodModel.getByFoodName(name).then(function(food){
+        console.log(food[0]["id"]);
+        newFoods.set("user", { "__type": "Pointer", "className": "_User", "objectId": 'ODSERISQ1h' });
+        newFoods.set("food", { "__type": "Pointer", "className": "Food", "objectId": food[0]["id"] });
+        newFoods.set("amount", amount);
+        newFoods.set("unit", unit);
+        newFoods.save()
+        .then((Food)=> {
+          console.log('New food added to pantry' + Food);
+          return Promise.resolve(Food);
+        }, (error)=> {
+          console.log('Error to add to pantry', error)
+        })
       })
+
     }
 }
 

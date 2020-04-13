@@ -36,6 +36,23 @@ class RecipesModel {
             .catch(error => Promise.reject(error));
     }
 
+    getAllRecipes() {
+        return new this.Parse.Query(this.New())
+            .include('id')
+            .include('name')
+            .include('imgUrl')
+            .include('recipeUrl')
+            .include('servingSize')
+            .find()
+            .then(result => {
+                //console.log('result', result)
+                this.Parse.defineAttributes(result, this.fields);
+                this.data = result;
+                return Promise.resolve(result);
+            })
+            .catch(error => Promise.reject(error));
+    }
+
     getByRecipeName(name) {
         return new this.Parse.Query(this.New())
             .include('name')
