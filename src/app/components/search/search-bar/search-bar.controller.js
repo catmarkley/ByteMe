@@ -17,13 +17,21 @@ function SearchBarController(FoodModel, PantryModel, IngredientsService, $state)
         }
         //console.log('foods', ctrl.foodList)
       });
+      ctrl.pantryList = [];
+      PantryModel.getByUser('ODSERISQ1h').then(function (results) {
+        for(var i=0; i < results.length; i++){
+          //console.log(results[i]['attributes']['food']['attributes']['name']);
+          result = results[i]['attributes']['food']['attributes']['name'];
+          ctrl.pantryList.push(result)
+        }
+      });
 
     }
     ctrl.addIngr = function(event, searchText, searchAmount, searchUnit){
       // Adds the text from the input box into the pantry using the ingredient service
       //IngredientsService.addToPantry(searchText);
         PantryModel.addToPantry(searchText, searchAmount, searchUnit);
-        //SearchPantryController.ctrl.pantryList.push(searchText);
+        ctrl.pantryList.push(searchText);
         $state.go('search',{
           controller: 'SearchPantryController',
           text: searchText

@@ -1,6 +1,9 @@
 var searchPantry = {
   templateUrl: './search-pantry.html',
-  controller: 'SearchPantryController'
+  controller: 'SearchPantryController',
+  bindings: {
+    pantryList: '<'
+  }
 };
 
 angular
