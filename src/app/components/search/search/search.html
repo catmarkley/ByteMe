@@ -1,7 +1,11 @@
 <div class="search">
     <div class="container spaced-out-sm">
       <search-bar on-add="$ctrl.addIngredient($event);" on-search="$ctrl.findRecipe($event);"></search-bar>
-      <search-pantry pantry-list="$ctrl.pantryList"></search-pantry>
-      <div ui-view></div>
+    </div>
+    <div class="container spaced-out-sm">
+      <div class="row">
+        <search-pantry class="col-sm-4" pantry-list="$ctrl.pantryList"></search-pantry>
+        <div ui-view class="col-sm-8"></div>
+      </div>
     </div>
 </div>

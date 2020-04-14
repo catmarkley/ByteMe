@@ -40,7 +40,7 @@ class IngredientsModel {
             })
             .catch(error => Promise.reject(error));
     }
-    
+
     getByRecipe(recipe) {
         return new this.Parse.Query(this.New())
             .include('recipe')
@@ -69,6 +69,25 @@ class IngredientsModel {
               this.Parse.defineAttributes(result, this.fields);
               this.data = result;
               console.log("getByRecipeAndFood", result);
+              return Promise.resolve(result);
+            })
+            .catch(error => Promise.reject(error));
+    }
+
+    getRecipesByFood(food) {
+        var foodQuery = new Parse.Query('Food');
+        foodQuery.equalTo('name', food);
+
+        return new this.Parse.Query(this.New())
+            .include('recipe')
+            .include('food')
+            //.equalTo('food', food)
+            .matchesQuery('food', foodQuery)
+            .find()
+            .then(result => {
+              this.Parse.defineAttributes(result, this.fields);
+              this.data = result;
+              console.log("getRecipesByFood", result);
               return Promise.resolve(result);
             })
             .catch(error => Promise.reject(error));
