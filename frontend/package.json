@@ -19,6 +19,7 @@
   "dependencies": {
     "@material/card": "^0.38.0",
     "@material/chips": "^3.1.0",
+    "@sendgrid/mail": "^7.0.1",
     "@uirouter/angularjs": "^1.0.10",
     "@uirouter/visualizer": "^4.0.0",
     "angular-chart.js": "^1.1.1",
