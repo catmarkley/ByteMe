@@ -1,0 +1,20 @@
+<div class="container spaced-out-sm">
+    <div class="row">
+        <div class="col center">
+          <h1 class="recipe-name">{{$ctrl.name}}</h1>
+
+          <ul class="ingredient-list">
+            <div ng-repeat="ingredient in $ctrl.ingredients">
+              <div ng-if="$ctrl.pantry.indexOf(ingredient) == -1">
+                <li class="ingredient-name ingr-failure">{{$ctrl.amount[ingredient].amount}} {{$ctrl.amount[ingredient].unit}} {{ingredient}} </li>
+              </div>
+              <div ng-if="$ctrl.pantry.indexOf(ingredient) != -1">
+                <li class="ingredient-name ingr-success">{{$ctrl.amount[ingredient].amount}} {{$ctrl.amount[ingredient].unit}} {{ingredient}} </li>
+              </div>
+            </div>
+          </ul>
+          <a ng-click="$ctrl.goToEmail()" class="btn recipe-theme">Send Email</a>
+          <br><br><br><br><br><br><br><br><br><br><br><br>
+        </div>
+    </div>
+</div>

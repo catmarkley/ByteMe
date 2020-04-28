@@ -49,8 +49,10 @@ dist
 templates.js
 package-lock.json
 
+
 # other
 /private
 Dockerfile
 nginx.conf
 .env
+sendgrid.env
