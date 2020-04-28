@@ -29,6 +29,16 @@ class PantryModel {
             return obj;
         }
     }
+
+
+    /**
+    * @name getById
+    * @methodOf Pantry.Model
+    * @description Takes in a Food ID and returns pantry entry
+    * @param {string=} [id] This parameter is used to identify a food in the pantry
+    * @returns {object} Returns a Parse Query object that match the query
+    */
+
     getById(id) {
         return new this.Parse.Query(this.New())
             .get(id)
@@ -40,6 +50,14 @@ class PantryModel {
             })
             .catch(error => Promise.reject(error));
     }
+
+    /**
+    * @name getByUser
+    * @methodOf Pantry.Model
+    * @description Takes in a User ID and returns the user's pantry
+    * @param {string=} [user] This parameter is used to identify a user
+    * @returns {object} Returns a Parse Query object that match the query
+    */
     getByUser(user) {
 
         var personQuery = new Parse.Query('User');
@@ -48,19 +66,23 @@ class PantryModel {
         return new this.Parse.Query(this.New())
             .include('user')
             .include('food')
-            //.equalTo('user', { "__type": "Pointer", "className": "_User", "objectId": user })
             .matchesQuery('user', personQuery)
             .find()
             .then(result => {
               this.Parse.defineAttributes(result, this.fields);
               this.data = result;
-              //result = result[0]['attributes']['food']['attributes']['name'];
               return Promise.resolve(result);
             })
             .catch(error => Promise.reject(error));
 
     }
-
+    /**
+    * @name getByUserName
+    * @methodOf Pantry.Model
+    * @description Takes in a User's name and returns the user query
+    * @param {string=} [name] This parameter is used to identify a user by name
+    * @returns {object} Returns a Parse Query object that matches the query
+    */
     getByUserName(name){
         return new this.Parse.Query(this.New())
           .get(id)
@@ -73,28 +95,21 @@ class PantryModel {
           .catch(error => Promise.reject(error));
 
     }
-    getByUserAndFood(user, food) {
-        return new this.Parse.Query(this.New())
-            .include('user')
-            .include('food')
-            .equalTo('user', user)
-            .equalTo('food', food)
-            .first()
-            .then(result => {
-              this.Parse.defineAttributes(result, this.fields);
-              this.data = result;
-              console.log("getByUserAndFood", result);
-              return Promise.resolve(result);
-            })
-            .catch(error => Promise.reject(error));
-    }
+    /**
+    * @name addToPantry
+    * @methodOf Pantry.Model
+    * @description Takes in a food name, amount and unit and adds it to a user's pantry
+    * @param {string=} [name] This parameter is used to identify a food
+    * @param {string=} [amount] This parameter is used to identify an amount
+    * @param {string=} [unit] This parameter is used to identify a unit
+    * @returns {object} Returns a Parse Query object that matches the query and adds to database
+    */
 
     addToPantry(name, amount, unit) {
       const newFood = Parse.Object.extend(this.name);
       const newFoods = new newFood();
       //HARD CODED USER ID
       this.FoodModel.getByFoodName(name).then(function(food){
-        console.log(food[0]["id"]);
         newFoods.set("user", { "__type": "Pointer", "className": "_User", "objectId": 'ODSERISQ1h' });
         newFoods.set("food", { "__type": "Pointer", "className": "Food", "objectId": food[0]["id"] });
         newFoods.set("amount", amount);

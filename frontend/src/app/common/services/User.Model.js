@@ -12,15 +12,20 @@ class UserModel {
         if (angular.isUndefined(obj)) {
             const parseObject = new this.Parse.Object(this.name)
             this.Parse.defineAttributes(parseObject, this.fields);
-            //parseObject.name = new this.Parse.Object(this.UserModel.name)
-            //this.Parse.defineAttributes(parseObject.name, this.FoodModel.fields);
             return parseObject;
         } else {
             this.Parse.defineAttributes(obj, this.fields);
-            //this.Parse.defineAttributes(obj.name, this.FoodModel.fields);
             return obj;
         }
     }
+
+    /**
+    * @name getById
+    * @methodOf User.Model
+    * @description Get user by id
+    * @param {string=} [id] This is a parameter that is the id of the user
+    * @returns {object} Returns parse query object of user
+    */
     getById(id) {
         return new this.Parse.Query(this.New())
             .get(id)
@@ -33,6 +38,14 @@ class UserModel {
             .catch(error => Promise.reject(error));
     }
 
+    /**
+    *
+    * @name getByUserName
+    * @methodOf User.Model
+    * @description Get recipe by name
+    * @param {string=} [name] This is a parameter that is the name of the user
+    * @returns {object} Returns parse query object user
+    */
     getByUserName(name) {
         return new this.Parse.Query(this.New())
             .include('name')
@@ -41,7 +54,6 @@ class UserModel {
             .then(users => {
                 users.forEach(user => {
                     this.Parse.defineAttributes(user, this.fields);
-                    //this.Parse.defineAttributes(recipe.name, this.RecipesModel.fields);
                 })
                 this.collection = users;
                 console.log("getByUserName", this.collection)

@@ -29,6 +29,14 @@ class IngredientsModel {
             return obj;
         }
     }
+
+    /**
+    * @name getById
+    * @methodOf Ingredients.Model
+    * @description Takes in an Ingredient ID and returns the Parse Ingredient object from that ID
+    * @param {string=} [id] This parameter is used to query the database
+    * @returns {object} returns a Parse Query object
+    */
     getById(id) {
         return new this.Parse.Query(this.New())
             .get(id)
@@ -41,6 +49,13 @@ class IngredientsModel {
             .catch(error => Promise.reject(error));
     }
 
+    /**
+    * @name getByRecipe
+    * @methodOf Ingredients.Model
+    * @description Takes in a recipe Parse object and returns Ingredient objects containing that recipe
+    * @param {object=} [recipe] This parameter is used to query the database
+    * @returns {object} returns a Parse Query object
+    */
     getByRecipe(recipe) {
         return new this.Parse.Query(this.New())
             .include('recipe')
@@ -58,6 +73,14 @@ class IngredientsModel {
             .catch(error => Promise.reject(error));
     }
 
+    /**
+    * @name getByRecipeAndFood
+    * @methodOf Ingredients.Model
+    * @description Takes in a recipe Parse object and food object and returns the Parse Ingredient object containing those
+    * @param {object=} [recipe] This parameter is used to query the database
+    * @param {object=} [food] This parameter is used to query the database
+    * @returns {object} returns a Parse Query object
+    */
     getByRecipeAndFood(recipe, food) {
         return new this.Parse.Query(this.New())
             .include('recipe')
@@ -74,6 +97,13 @@ class IngredientsModel {
             .catch(error => Promise.reject(error));
     }
 
+    /**
+    * @name getRecipesByFood
+    * @methodOf Ingredients.Model
+    * @description Takes in a food object and returns the Parse Ingredient object containing those
+    * @param {object=} [food] This parameter is used to query the database
+    * @returns {object} returns a Parse Query object
+    */
     getRecipesByFood(food) {
         var foodQuery = new Parse.Query('Food');
         foodQuery.equalTo('name', food);

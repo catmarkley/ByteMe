@@ -24,6 +24,15 @@ class RecipesModel {
             return obj;
         }
     }
+
+  /**
+  *
+  * @name getById
+  * @methodOf Recipes.Model
+  * @description Get recipe by id
+  * @param {string=} [id] This is a parameter that is the id of the recipe
+  * @returns {object} Returns recipe
+  */
     getById(id) {
         return new this.Parse.Query(this.New())
             .get(id)
@@ -36,6 +45,12 @@ class RecipesModel {
             .catch(error => Promise.reject(error));
     }
 
+    /**
+    *
+    * @name getAllRecipes
+    * @description Get all recipes
+    * @returns {parce query object} Returns recipes
+    */
     getAllRecipes() {
         return new this.Parse.Query(this.New())
             .include('name')
@@ -52,6 +67,13 @@ class RecipesModel {
             .catch(error => Promise.reject(error));
     }
 
+    /**
+    * @name getByRecipeName
+    * @methodOf Recipes.Model
+    * @description Get recipe by name
+    * @param {string=} [name] This is a parameter that is the name of the recipe
+    * @returns {object} Returns parse query object recipe 
+    */
     getByRecipeName(name) {
         return new this.Parse.Query(this.New())
             .include('name')

@@ -1,4 +1,4 @@
-function SearchResultController(IngredientsService, $state) {
+function SearchResultController($state) {
     var ctrl = this;
 
     // When the 'Go To Recipe' button is clicked, send the event to the parent

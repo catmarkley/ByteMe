@@ -1,4 +1,4 @@
-function SearchBarController(FoodModel, PantryModel, IngredientsService, $state) {
+function SearchBarController(FoodModel, PantryModel,$state) {
   var ctrl = this;
 
   ctrl.$onInit = function () {
