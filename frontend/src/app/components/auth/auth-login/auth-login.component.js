@@ -1,23 +1,27 @@
 const authLogin = {
-  templateUrl: '/auth-login.html',
-  controller: ($state, AuthService) => {
+  templateUrl: './auth-login.html',
+  controller: function ($state, AuthService){
     const ctrl = this
     ctrl.$onInit = () => {
       ctrl.user = {
-        email: '',
+        username: '',
         password: ''
       }
     }
     ctrl.loginUser = (event) => {
-      console.log('event', event)
+      AuthService.login(event.user)
+      .then(function () {
+        $state.go('search');
+      }, function (reason) {
+        ctrl.error = reason.message;
+      });
     }
   }
 }
 
-
 angular
   .module('components.auth')
-  .component('auth-login', authLogin)
+  .component('authLogin', authLogin)
   .config(($stateProvider, $urlRouterProvider) => {
     $stateProvider
     .state('auth',{

@@ -1,8 +1,39 @@
 <form name="authForm" novalidate ng-submit="$ctrl.submitForm();">
-  <md-list>
-    <md-list-item ng-if="$ctrl.button === 'Sign Up & Create Account'"">
-      <mdc-text-field>
-      </mdc-text-field>
-    </md-list-item>
-  </md-list>
+    <div style="width: 100%;" layout="column" layout-align="center center">
+        <div>
+            <img src="img/logo.png" width="197px" style="padding-bottom:30px;" />
+        </div>
+        <div>
+            <md-list>
+                <md-list-item ng-if="$ctrl.button === 'Sign Up & Create Account'" class="">
+                    <mdc-text-field required class="auth_textField" label="First Name" outlined="true" dense="isDense" >
+                        <input autofocus required type="text" class="auth_input" name="firstName" ng-model="$ctrl.user.firstName">
+                    </mdc-text-field>
+                </md-list-item>
+                <md-list-item ng-if="$ctrl.button === 'Sign Up & Create Account'" class="">
+                    <mdc-text-field required class="auth_textField" label="Last Name" outlined="true" dense="isDense" >
+                        <input required type="text" class="auth_input" name="lastName" ng-model="$ctrl.user.lastName">
+                    </mdc-text-field>
+                </md-list-item>
+                <md-list-item>
+                    <mdc-text-field class="auth_textField" label="Username" outlined="true" dense="isDense" ng-class="{'demo-text-field-custom-colors demo-text-field-custom-error-colors': altColors}">
+                        <input autofocus type="username" class="auth_input" ng-model="$ctrl.user.username" required>
+                    </mdc-text-field>
+                </md-list-item>
+                <md-list-item>
+                    <mdc-text-field class="auth_textField" label="Password" outlined="true" dense="isDense" ng-class="{'demo-text-field-custom-colors demo-text-field-custom-error-colors': altColors}">
+                        <input required type="password" class="auth_input" ng-model="$ctrl.user.password">
+                    </mdc-text-field>
+                    <md-button class="forgot-button" ng-if="$ctrl.button === 'Login'" ng-click="$ctrl.navReset();" style="position: absolute; right:10px; top:35px;">
+                        <p class="forgot-text button">FORGOT?</p>
+                    </md-button>
+                </md-list-item>
+            </md-list>
+        </div>
+        <div>
+            <button type="submit"class="md-raised auth__button" ng-class="{'mdc-theme--secondary-bg': !authForm.$invalid}">
+                <h1 class="auth__buttonText button">{{ $ctrl.button }}</h1>
+            </button>
+        </div>
+    </div>
 </form>
