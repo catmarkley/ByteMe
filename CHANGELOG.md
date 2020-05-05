@@ -37,3 +37,21 @@ Skylar Adams, Emma Brady, Chandler Crane, Catherine Markley
 * Implemented an express server
 * REST calls (POST call to send email with grocery list)
 * More information on recipe ingredients page (amount and units of ingredients)
+
+<a name="v0.4"></a>
+## [0.4]
+
+v0.4 includes user authentication which allows different users to save their pantries. Additionally, we now have completed recipe functionality with a recipe url.
+
+
+## Contributors
+
+Skylar Adams, Emma Brady, Chandler Crane, Catherine Markley
+
+## Features
+
+* Added authentication
+* Added login/create account pages with styling
+* Added personlized pantries per user
+* Added link to recipe
+
