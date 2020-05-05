@@ -6,9 +6,9 @@ const authForm = {
     onSubmit: "&"
   },
   templateUrl: './auth-form.html',
-  controller: ($state) => {
+  controller: function($state) {
       const ctrl = this;
-      ctrl.submitForm = () => {
+      ctrl.submitForm = function(){
         ctrl.onSubmit({
           $event: {
             user: ctrl.user

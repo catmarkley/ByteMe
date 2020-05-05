@@ -1,5 +1,6 @@
 angular
   .module('components', [
     'components.search',
-    'components.recipe'
+    'components.recipe',
+    'components.auth'
   ]);
