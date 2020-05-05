@@ -63,6 +63,7 @@ class IngredientsModel {
             .include('id')
             .include('amount')
             .include('unit')
+            .include('recipeUrl')
             .equalTo('recipe', recipe)
             .find()
             .then(result => {

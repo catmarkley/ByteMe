@@ -6,12 +6,14 @@ function RecipeIngredientsController(PantryModel, IngredientsModel, RecipesModel
     ctrl.name = '';
     ctrl.pantry = [];
     ctrl.amount = {};
+    ctrl.recipeUrl= '';
 
   ctrl.$onInit = function () {
 
     RecipesModel.getById(recipeId).then(function(recipe){
         console.log('Here is the recipe: ', recipe);
         ctrl.name = recipe.name;
+        ctrl.recipeUrl = recipe.recipeUrl;
         IngredientsModel.getByRecipe(recipe).then(function(results){
             console.log('Here is the ingredients result: ', results);
             for (var i = 0; i < results.length; i++){
