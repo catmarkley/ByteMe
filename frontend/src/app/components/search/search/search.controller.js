@@ -1,4 +1,4 @@
-function SearchController(FoodModel, PantryModel, $state) {
+function SearchController(FoodModel, PantryModel, AuthService, $state) {
     var ctrl = this;
 
     ctrl.$onInit = function () {
@@ -29,6 +29,15 @@ function SearchController(FoodModel, PantryModel, $state) {
         ingredient: event.recipeText
       });
     }
+
+    ctrl.logout = function(){
+      AuthService.logout()
+      .then(function () {
+        $state.go('auth.login');
+      }, function (reason) {
+        ctrl.error = reason.message;
+      });
+    };
 
 }
 

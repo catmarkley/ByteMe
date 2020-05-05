@@ -1,4 +1,4 @@
-function RecipeIngredientsController(PantryModel, IngredientsModel, RecipesModel, $state, $http) {
+function RecipeIngredientsController(PantryModel, IngredientsModel, RecipesModel, AuthService, $state, $http) {
     var ctrl = this;
     var recipeId = $state.params.id;
     console.log(recipeId);
@@ -38,6 +38,7 @@ function RecipeIngredientsController(PantryModel, IngredientsModel, RecipesModel
   ctrl.goToEmail = function(){
     var grocery = document.getElementsByClassName('ingr-failure')
     var groceryList = {}
+    var sendData = {}
     groceryList['recipename'] = document.getElementsByClassName('recipe-name')[0].innerText
     groceryList['subject'] = "Your Grocery List for " + document.getElementsByClassName('recipe-name')[0].innerText
     groceryList['food'] = []
@@ -46,15 +47,26 @@ function RecipeIngredientsController(PantryModel, IngredientsModel, RecipesModel
       food['name'] = grocery[i].innerText
       groceryList['food'].push(food)
     }
+    sendData['groceries']= groceryList
+    sendData['email'] = AuthService.getUser().email
     console.log('groceryList', groceryList)
     var req = {
       method: 'POST',
       url: 'http://localhost:1338/email',
-      data: groceryList
+      data: sendData
     }
 
     $http(req).then(function(data){
       console.log('data', data); 
+    });
+  };
+
+  ctrl.logout = function(){
+    AuthService.logout()
+    .then(function () {
+      $state.go('auth.login');
+    }, function (reason) {
+      ctrl.error = reason.message;
     });
   };
 }

@@ -5,18 +5,19 @@ const authRegister = {
     ctrl.$onInit = function(){
       ctrl.error = null;
       ctrl.user = {
-        firstName: '',
-        lastName: '',
+        name: '',
+        email: '',
         username: '',
         password: ''
       }
     }
-    ctrl.creatUser = (event) => {
-      AuthService.signUp(event.user)
+    ctrl.createUser = function (event){
+      AuthService.register(event.user)
       .then(function () {
-        $state.go('login');
+        $state.go('auth.login');
       }, function (reason) {
         ctrl.error = reason.message;
+        console.log(ctrl.error)
       });
     }
   }

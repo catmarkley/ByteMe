@@ -24,10 +24,10 @@ function sendEmail(req, res){
     "template_id": "d-babbb5fed2c344d1a8d2b0be5491e729",
     "personalizations": [
       {
-        "dynamic_template_data": req.body,
+        "dynamic_template_data": req.body['groceries'],
         "to": [
           {
-            "email": "ebrady6@nd.edu"
+            "email": req.body['email']
           }
         ]
       }
