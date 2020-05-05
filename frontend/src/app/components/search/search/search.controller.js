@@ -4,7 +4,7 @@ function SearchController(FoodModel, PantryModel, AuthService, $state) {
     ctrl.$onInit = function () {
       var result;
       ctrl.pantryList = [];
-      PantryModel.getByUser('ODSERISQ1h').then(function (results) {
+      PantryModel.getByUserEmail(AuthService.getUser().email).then(function (results) {
         for(var i=0; i < results.length; i++){
           result = results[i]['attributes']['food']['attributes']['name'];
           ctrl.pantryList.push(result)
