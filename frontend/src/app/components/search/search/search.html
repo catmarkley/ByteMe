@@ -1,4 +1,7 @@
 <div class="search">
+  <div>
+    <a ng-click="$ctrl.logout()" class="btn recipe-theme">logout</a>
+  </div>
     <div class="container spaced-out-sm">
       <search-bar on-add="$ctrl.addIngredient($event);" on-search="$ctrl.findRecipe($event);"></search-bar>
     </div>
