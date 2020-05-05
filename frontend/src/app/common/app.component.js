@@ -10,7 +10,8 @@ angular
     $locationProvider.hashPrefix('');
     $stateProvider
       .state('app', {
-        url: '/app',
+        redirectTo: 'search',
+        url: '',
         data: {
           requiredAuth: false
         },

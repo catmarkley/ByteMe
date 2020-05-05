@@ -77,20 +77,25 @@ class PantryModel {
 
     }
     /**
-    * @name getByUserName
+    * @name getByUserEmail
     * @methodOf Pantry.Model
-    * @description Takes in a User's name and returns the user query
-    * @param {string=} [name] This parameter is used to identify a user by name
+    * @description Takes in a User's email and returns the user query
+    * @param {string=} [email] This parameter is used to identify a user by email
     * @returns {object} Returns a Parse Query object that matches the query
     */
-    getByUserName(name){
-        return new this.Parse.Query(this.New())
-          .get(id)
+    getByUserEmail(email){
+      var personQuery = new Parse.Query('User');
+      personQuery.equalTo('email', email);
+
+      return new this.Parse.Query(this.New())
+          .include('user')
+          .include('food')
+          .matchesQuery('user', personQuery)
+          .find()
           .then(result => {
-              console.log('result', result)
-              this.Parse.defineAttributes(result, this.fields);
-              this.data = result;
-              return Promise.resolve(result);
+            this.Parse.defineAttributes(result, this.fields);
+            this.data = result;
+            return Promise.resolve(result);
           })
           .catch(error => Promise.reject(error));
 
